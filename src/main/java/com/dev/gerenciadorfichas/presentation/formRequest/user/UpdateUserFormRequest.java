@@ -1,11 +1,18 @@
 package com.dev.gerenciadorfichas.presentation.formRequest.user;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Data
-public class CreateUserFormRequest {
+public class UpdateUserFormRequest {
+
+    @NotBlank(message = "Id is required")
+    @Size(min = 36, message = "Id must be min 36 characters long")
+    private String id;
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -23,9 +30,4 @@ public class CreateUserFormRequest {
     @NotBlank(message = "Name is required")
     @Email(message = "Invalid email")
     private String email;
-
-    @NotBlank(message = "Name is required")
-    @Size(min=6, message = "Password must be at least 6 characters long")
-    private String password;
-
 }

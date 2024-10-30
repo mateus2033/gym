@@ -1,8 +1,8 @@
 package com.dev.gerenciadorfichas.application.services.user;
 
 import com.dev.gerenciadorfichas.application.contracts.user.CreteUserApplicationInterface;
-import com.dev.gerenciadorfichas.application.dto.UserInputDTO;
-import com.dev.gerenciadorfichas.domain.dto.user.UserOutputDTO;
+import com.dev.gerenciadorfichas.application.dto.user.CreateUserInputDTO;
+import com.dev.gerenciadorfichas.domain.dto.user.CreateOutputDTO;
 import com.dev.gerenciadorfichas.domain.model.User;
 import com.dev.gerenciadorfichas.domain.services.user.CreateUserDomainService;
 import com.dev.gerenciadorfichas.domain.services.user.GetUserByCpfDomainService;
@@ -26,7 +26,7 @@ public class CreateUserApplicationService implements CreteUserApplicationInterfa
     private GetUserByEmailDomainService getUserByEmailService;
 
     @Transactional
-    public UserOutputDTO execute(CreateUserFormRequest userdata) {
+    public CreateOutputDTO execute(CreateUserFormRequest userdata) {
         User email = this.getUserByEmailService.execute(userdata.getEmail());
         if (email != null) {
             throw new ResourceAlreadyExistsException("Email already registered");
@@ -37,7 +37,7 @@ public class CreateUserApplicationService implements CreteUserApplicationInterfa
             throw new ResourceAlreadyExistsException("Email already registered");
         }
 
-        UserInputDTO user = new UserInputDTO(
+        CreateUserInputDTO user = new CreateUserInputDTO(
                 userdata.getName(),
                 userdata.getCpf(),
                 userdata.getData_birth(),
