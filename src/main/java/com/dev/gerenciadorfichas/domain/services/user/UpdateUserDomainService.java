@@ -19,9 +19,15 @@ public class UpdateUserDomainService {
 
     public UpdateOutputDTO execute(UpdateUserInputDTO userData) {
         User user = userMapper.toEntityUpdate(userData);
-        userRepository.save(user);
+        userRepository.updateUser(
+                user.getId(),
+                user.getName(),
+                user.getData_birth(),
+                user.getCellphone()
+        );
 
         return new UpdateOutputDTO(
+                user.getId(),
                 user.getName(),
                 user.getCpf(),
                 user.getData_birth(),

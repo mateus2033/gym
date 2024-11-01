@@ -31,7 +31,6 @@ public class UserMapper {
         user.setData_birth(DateUtil.convertStringToDate(userData.getDataBirth()));
         user.setCellphone(userData.getCellphone());
         user.setEmail(userData.getEmail());
-        user.setPassword(userData.getPassword());
         return user;
     }
 }

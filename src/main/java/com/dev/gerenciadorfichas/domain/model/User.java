@@ -4,9 +4,12 @@ package com.dev.gerenciadorfichas.domain.model;
 import java.io.Serializable;
 import java.util.UUID;
 import jakarta.persistence.*;
+import org.hibernate.annotations.DynamicUpdate;
+
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 @Table(name = "users")
 public class User implements Serializable  {
 

@@ -1,11 +1,9 @@
 package com.dev.gerenciadorfichas.presentation.formRequest.user;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-import org.hibernate.validator.constraints.br.CPF;
 
 @Data
 public class UpdateUserFormRequest {
@@ -17,17 +15,11 @@ public class UpdateUserFormRequest {
     @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank(message = "Name is required")
-    @CPF
-    private String cpf;
-
     @NotBlank(message = "Date of birth is required")
     @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Date must be in the format YYYY-MM-DD")
     private String data_birth;
 
+    @NotBlank(message = "Cellphone of birth is required")
+    @Pattern(regexp = "(\\d{2}) \\d{5}-\\d{4}", message = "Date must be in the format (xx) xxxxxx-xxxx")
     private String cellphone;
-
-    @NotBlank(message = "Name is required")
-    @Email(message = "Invalid email")
-    private String email;
 }

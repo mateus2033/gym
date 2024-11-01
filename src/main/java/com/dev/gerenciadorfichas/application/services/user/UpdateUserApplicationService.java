@@ -32,12 +32,12 @@ public class UpdateUserApplicationService implements UpdateUserApplicationInterf
         UpdateUserInputDTO userUpdate = new UpdateUserInputDTO(
                 user.getId(),
                 userData.getName(),
-                userData.getCpf(),
+                user.getCpf(),
                 userData.getData_birth(),
                 userData.getCellphone(),
-                userData.getEmail(),
-                user.getPassword()
+                user.getEmail()
         );
+
         return updateUserDomainService.execute(userUpdate);
     }
 }

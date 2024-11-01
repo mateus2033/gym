@@ -43,7 +43,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
-    @PutMapping("/update")
+    @PatchMapping("/update")
     public ResponseEntity<Object> updateUser(@RequestBody @Valid UpdateUserFormRequest updateUser) {
         var user = this.updateUserApplicationService.execute(updateUser);
         return ResponseEntity.status(HttpStatus.OK).body(user);
