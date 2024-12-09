@@ -9,7 +9,6 @@ import org.hibernate.annotations.DynamicUpdate;
 import java.util.Date;
 
 @Entity
-@DynamicUpdate
 @Table(name = "users")
 public class User implements Serializable  {
 
