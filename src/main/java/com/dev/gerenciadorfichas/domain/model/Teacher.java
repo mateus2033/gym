@@ -19,15 +19,30 @@ public class Teacher implements Serializable {
     @Column(nullable = false, length = 200)
     private String name;
 
+    @Column(nullable = false, length = 20)
+    private String cellphone;
+
     @Column(nullable = false, length = 14, unique = true)
     private String cpf;
 
     @Column(nullable = false, unique = true)
-    private Integer series;
+    private Integer registration;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false, length = 255)
     private String password;
+
+    public Teacher() {}
+
+    public Teacher(UUID id, String name, String cellphone, String cpf, Integer registration, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.cellphone = cellphone;
+        this.cpf = cpf;
+        this.registration = registration;
+        this.email = email;
+        this.password = password;
+    }
 }

@@ -1,8 +1,8 @@
 package com.dev.gerenciadorfichas.domain.services.teacher;
 
-import com.dev.gerenciadorfichas.application.dto.teacher.CreateTeacherInputDTO;
-import com.dev.gerenciadorfichas.domain.contracts.teacher.CreateTeacherDomainInterface;
-import com.dev.gerenciadorfichas.domain.dto.teacher.CreateOutputDTO;
+import com.dev.gerenciadorfichas.application.dto.teacher.UpdateTeacherInputDTO;
+import com.dev.gerenciadorfichas.domain.contracts.teacher.UpdateTeacherDomainInterface;
+import com.dev.gerenciadorfichas.domain.dto.teacher.UpdateOutputDTO;
 import com.dev.gerenciadorfichas.domain.mappers.teacher.TeacherMapper;
 import com.dev.gerenciadorfichas.domain.model.Teacher;
 import com.dev.gerenciadorfichas.domain.repositories.TeacherRepository;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateTeacherDomainService implements CreateTeacherDomainInterface {
+public class UpdateTeacherDomainService implements UpdateTeacherDomainInterface {
 
     @Autowired
     private TeacherRepository teacherRepository;
@@ -18,10 +18,16 @@ public class CreateTeacherDomainService implements CreateTeacherDomainInterface 
     @Autowired
     private TeacherMapper teacherMapper;
 
-    public CreateOutputDTO execute(CreateTeacherInputDTO teacherData) {
-        Teacher teacher = teacherMapper.toEntityCreate(teacherData);
-        teacherRepository.save(teacher);
-        return new CreateOutputDTO(
+    public UpdateOutputDTO execute(UpdateTeacherInputDTO updateTeacher){
+        Teacher teacher = teacherMapper.toEntityUpdate(updateTeacher);
+        teacherRepository.updateTeacher(
+                teacher.getId(),
+                teacher.getName(),
+                teacher.getCellphone(),
+                teacher.getCpf(),
+                teacher.getEmail()
+        );
+        return new UpdateOutputDTO(
                 teacher.getId(),
                 teacher.getName(),
                 teacher.getCpf(),

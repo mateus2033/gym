@@ -34,7 +34,7 @@ public class CreateUserApplicationService implements CreteUserApplicationInterfa
 
         User cpf = this.getUserByCpfService.execute(userdata.getCpf());
         if (cpf != null) {
-            throw new ResourceAlreadyExistsException("Email already registered");
+            throw new ResourceAlreadyExistsException("CPF already registered");
         }
 
         CreateUserInputDTO user = new CreateUserInputDTO(

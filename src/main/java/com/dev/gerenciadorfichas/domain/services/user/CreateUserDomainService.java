@@ -23,6 +23,7 @@ public class CreateUserDomainService implements CreateUserDomainInterface {
         userRepository.save(user);
 
         return new CreateOutputDTO(
+                user.getId(),
                 user.getName(),
                 user.getCpf(),
                 user.getData_birth(),

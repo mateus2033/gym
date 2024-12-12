@@ -4,12 +4,17 @@ package com.dev.gerenciadorfichas.domain.model;
 import java.io.Serializable;
 import java.util.UUID;
 import jakarta.persistence.*;
-import org.hibernate.annotations.DynamicUpdate;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
 public class User implements Serializable  {
 
     @Id
@@ -34,6 +39,14 @@ public class User implements Serializable  {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @Column(name = "createdAt")
+    @CreationTimestamp
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    @UpdateTimestamp
+    private Date updatedAt;
+
     public User() {}
 
     public User(UUID id, String name, String cpf, Date data_birth, String cellphone, String email, String password) {
@@ -44,62 +57,6 @@ public class User implements Serializable  {
         this.data_birth = data_birth;
         this.cellphone = cellphone;
         this.email = email;
-        this.password = password;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Date getData_birth() {
-        return data_birth;
-    }
-
-    public void setData_birth(Date data_birth) {
-        this.data_birth = data_birth;
-    }
-
-    public String getCellphone() {
-        return cellphone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
 }
