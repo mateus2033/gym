@@ -3,7 +3,10 @@ package com.dev.gerenciadorfichas.domain.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -33,6 +36,14 @@ public class Teacher implements Serializable {
 
     @Column(nullable = false, length = 255)
     private String password;
+
+    @Column(name = "createdAt")
+    @CreationTimestamp
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    @UpdateTimestamp
+    private Date updatedAt;
 
     public Teacher() {}
 
